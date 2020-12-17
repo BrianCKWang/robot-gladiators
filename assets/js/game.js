@@ -58,7 +58,7 @@ var startGame = function() {
   var fight = function(enemy) {
     while (playerInfo.health > 0 && enemy.health > 0) {
       // ask player if they'd like to fight or run
-      var promptFight = window.prompt('Would you like to FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose.');
+      var promptFight = window.prompt('Would you like to FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose.').toLowerCase();
   
       // if player picks "skip" confirm and then stop the loop
       if (promptFight === 'skip' || promptFight === 'SKIP') {
@@ -142,7 +142,7 @@ var startGame = function() {
     // ask player what they'd like to do
     var shopOptionPrompt = window.prompt(
       'Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one "REFILL", "UPGRADE", or "LEAVE" to make a choice.'
-    );
+    ).toLowerCase();
   
     // use switch case to carry out action
     switch (shopOptionPrompt) {
@@ -174,9 +174,19 @@ var startGame = function() {
   /* END GAME FUNCTIONS */
   
   /* GAME INFORMATION / VARIABLES */
+  // function to set name
+var getPlayerName = function() {
+    var name = "";
   
+    while (name === "" || name === null) {
+        name = prompt("What is your robot's name?");
+    }
+  
+    console.log("Your robot's name is " + name);
+    return name;
+}
   // player information
-  var playerInfo = {
+var playerInfo = {
     name: getPlayerName(),
     health: 100,
     attack: 10,
@@ -198,17 +208,7 @@ var startGame = function() {
     }
   };
   
-// function to set name
-var getPlayerName = function() {
-    var name = "";
-  
-    while (name === "" || name === null) {
-        name = prompt("What is your robot's name?");
-    }
-  
-    console.log("Your robot's name is " + name);
-    return name;
-}
+
 
   // enemy information
   var enemyInfo = [
